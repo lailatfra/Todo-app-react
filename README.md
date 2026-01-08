@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Todo List - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikasi Todo List menggunakan React dengan fitur lengkap untuk mengelola task harian.
 
-## Available Scripts
+## Teknologi
 
-In the project directory, you can run:
+- React Hooks (useState, useEffect)
+- Fetch API
+- CSS custom
 
-### `npm start`
+## Fitur
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Menampilkan daftar todo
+- Menambah dan edit todo (nama, deskripsi, waktu)
+- Melihat detail todo
+- Toggle status (pending/done)
+- Menghapus todo
+- Real-time clock dan statistik
+- Responsive design
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Struktur Komponen
 
-### `npm test`
+```
+App.js
+├── TodoForm.jsx (Form tambah/edit)
+├── TodoList.jsx (Container list)
+├── TodoItem.jsx (Single item)
+└── TodoDetail.jsx (Detail popup)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Alur Aplikasi
 
-### `npm run build`
+### 1. Load Data
+Saat aplikasi dimuat, fetch semua todo dari backend:
+```javascript
+GET http://localhost:8080/todos
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Tambah Todo
+- Klik tombol (+) → popup form
+- Submit → `POST /todos` dengan body: `{title, description}`
+- List refresh otomatis
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Lihat Detail
+- Klik todo item → `GET /todos/{id}`
+- Popup detail muncul dengan informasi lengkap
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4. Edit Todo
+- Dari detail, klik Edit → popup form terisi data
+- Submit → `PUT /todos/{id}` dengan body: `{title, description}`
+- List refresh otomatis
 
-### `npm run eject`
+### 5. Toggle Status
+- Klik checkbox atau tombol toggle
+- Request: `PUT /todos/{id}` tanpa body
+- Backend toggle status otomatis
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 6. Hapus Todo
+- Klik tombol Hapus → konfirmasi
+- Request: `DELETE /todos/{id}`
+- List refresh otomatis
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Instalasi
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm install
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Aplikasi berjalan di `http://localhost:3000`
 
-## Learn More
+## Konfigurasi
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Backend API endpoint di `App.js`:
+```javascript
+const API_URL = "http://localhost:8080/todos";
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Catatan
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Pastikan backend sudah berjalan di port 8080
+- Format title: `{nama} - {waktu}` untuk parsing waktu
+- Deskripsi bersifat optional
