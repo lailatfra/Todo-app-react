@@ -1,4 +1,4 @@
-# Todo List - Frontend
+# React Frontend Todo-List
 
 Aplikasi Todo List menggunakan React dengan fitur lengkap untuk mengelola task harian.
 
@@ -75,9 +75,3 @@ Backend API endpoint di `App.js`:
 ```javascript
 const API_URL = "http://localhost:8080/todos";
 ```
-
-## Catatan
-
-- Pastikan backend sudah berjalan di port 8080
-- Format title: `{nama} - {waktu}` untuk parsing waktu
-- Deskripsi bersifat optional
