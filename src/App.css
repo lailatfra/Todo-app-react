@@ -360,7 +360,7 @@ body {
 
 .btn-delete {
   padding: 0.5rem 1rem;
-  background: #666;
+  background: #9c7373;
   color: white;
   border: none;
   border-radius: 4px;
@@ -370,7 +370,7 @@ body {
 }
 
 .btn-delete:hover {
-  background: #888;
+  background: #a59090;
 }
 
 .empty-state {
@@ -402,7 +402,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 1rem;
 }
 
 .detail-title {
@@ -430,8 +429,8 @@ body {
 
 .status-badge.done {
   background: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #a5d6a7;
+  color: #4e8650;
+  border: 1px solid #bcdabd;
 }
 
 .detail-description {
@@ -491,7 +490,7 @@ body {
 .btn-toggle {
   width: 100%;
   padding: 0.7rem;
-  background: #4caf50;
+  background: #538a55;
   color: white;
   border: none;
   border-radius: 4px;
@@ -506,7 +505,7 @@ body {
 }
 
 .btn-toggle:hover {
-  background: #66bb6a;
+  background: #8aaa8b;
 }
 
 .detail-actions {
